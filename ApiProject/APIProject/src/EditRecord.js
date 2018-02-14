@@ -8,6 +8,11 @@ import axios from "axios"
 class EditData extends Component {
 
 
+    static navigationOptions = {
+        title: 'EDIT DATA'
+    }
+
+
     constructor() {
         super()
 
@@ -39,11 +44,32 @@ class EditData extends Component {
         axios.post(`${api}`, data)
             .then((res) => {
                 console.log(res)
+                this.props.navigation.navigate('AllDataRoute')
             })
 
 
     }
 
+
+
+    addData(s) {
+        console.log(s)
+        var api = 'http://pmp.cometocode.com/MyApp/ '
+
+        var data = {
+            ProjectID : this.state.proId,
+            ProjectName : this.state.proName,
+            ProjectDescription : this.state.description,
+            ProjectNature : this.state.nature,
+            ProjectStatus : this.state.projectStatus
+        }
+                axios.post(`${api}` , data)
+                .then((res)=>{
+                    console.log(res)
+                    this.props.navigation.navigate('AllDataRoute')
+                })
+
+    }
 
     componentWillMount() {
         console.log(this.props.navigation.state.params.data)
@@ -75,8 +101,11 @@ class EditData extends Component {
                 <TextInput value={this.state.proName} onChangeText={(text) => { this.setState({ proName: text }) }} />
 
 
-                <Button title='Save' onPress={this.saveTask.bind(this)} />
+                <Button title='Save edit data' onPress={this.saveTask.bind(this)} />
+                <Text></Text>
+                <Text></Text>
 
+                <Button title='ADD New DATA ' onPress={this.addData.bind(this)} />
             </View>
         );
     }

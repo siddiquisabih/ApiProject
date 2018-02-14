@@ -54,6 +54,9 @@ class AllData extends Component {
     }
 
 
+    
+
+
 
     render() {
         return (
@@ -73,7 +76,10 @@ class AllData extends Component {
                                 <Button title='Delete Record' onPress={this.deleteFun.bind(this, m.ProjectID)}></Button>
                                 <Text></Text>
                                 <Text></Text>
-                                <Button title='Edit Record' onPress={() => { this.props.navigation.navigate('EditDataRoute' , {data : m}) }}></Button>
+                                <Button title='Edit Record' onPress={() => { this.props.navigation.navigate('EditDataRoute', { data: m }) }}></Button>
+                                <Text></Text>
+                                <Button title='Add Record' onPress={() => { this.props.navigation.navigate('EditDataRoute', { data: m }) }}></Button>
+
 
                             </View>
                         )
